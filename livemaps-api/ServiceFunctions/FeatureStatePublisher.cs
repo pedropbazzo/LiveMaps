@@ -25,7 +25,7 @@ namespace AzureMapsStatusPublisher
                                       [Blob("refdata", Connection = "AzureWebJobsStorage")] CloudBlobContainer container,
                                       ILogger log)
         {
-            var atlasConfigFile = Environment.GetEnvironmentVariable("AtlasConfigFile") ?? "atlasConfig.json";
+            var atlasConfigFile = Environment.GetEnvironmentVariable("AtlasConfigFile") ?? "atlasConfig.json"; 
             var exceptions = new List<Exception>();
             bool prerequisites = true;
             bool updateRecentData = false;
@@ -40,7 +40,7 @@ namespace AzureMapsStatusPublisher
                 foreach(var stateSet in buildingConfig.StateSets)
                 {
                     string statesetid = stateSet.StateSetId.ToString();
-                    if (!mapsServices.ContainsKey(statesetid))
+                    if (!mapsServices.ContainsKey(statesetid)) 
                     {
                         mapsServices.Add(statesetid, new MapsService(buildingConfig.SubscriptionKey, buildingConfig.DatasetId, statesetid));
                     }
